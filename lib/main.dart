@@ -8,9 +8,10 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  @overrideuk
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Oyunlar',
       theme: ThemeData(primarySwatch: Colors.orange),
       home: const MyHomePage(),
