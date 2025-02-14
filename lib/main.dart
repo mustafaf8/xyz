@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'games/G2048/G2048View.dart'; // 2048 arayüz dosyamız
 
@@ -9,13 +8,11 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  @override
+  @overrideuk
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Oyunlar',
-      theme: ThemeData(
-        primarySwatch: Colors.orange,
-      ),
+      theme: ThemeData(primarySwatch: Colors.orange),
       home: const MyHomePage(),
     );
   }
@@ -27,9 +24,7 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Oyunlar'),
-      ),
+      appBar: AppBar(title: const Text('Oyunlar')),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

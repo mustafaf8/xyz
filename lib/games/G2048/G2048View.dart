@@ -3,7 +3,7 @@ import 'G2048Logic.dart';
 import 'G2048HighScoreManager.dart';
 
 class G2048View extends StatefulWidget {
-  const G2048View({Key? key}) : super(key: key);
+  const G2048View({super.key});
 
   @override
   State<G2048View> createState() => _G2048ViewState();
@@ -90,8 +90,18 @@ class _G2048ViewState extends State<G2048View> {
       ),
       child: Column(
         children: [
-          Text(title, style: const TextStyle(color: Colors.white, fontSize: 16)),
-          Text('$score', style: const TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold)),
+          Text(
+            title,
+            style: const TextStyle(color: Colors.white, fontSize: 16),
+          ),
+          Text(
+            '$score',
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
         ],
       ),
     );
