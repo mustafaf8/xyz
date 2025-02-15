@@ -26,7 +26,7 @@ class _GameScreenState extends State<GameScreen> {
   Stopwatch stopwatch = Stopwatch();
   Timer? uiTimer;
 
-  int hintCount = 6;
+  int hintCount = 3;
 
   @override
   void initState() {
@@ -91,7 +91,7 @@ class _GameScreenState extends State<GameScreen> {
       return;
     }
     setState(() {
-      hintCount = 6;
+      hintCount -= 1;
     });
     List<String> unsolved =
         gameLogic.words
