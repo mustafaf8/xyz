@@ -47,7 +47,7 @@ class _LevelSelectionScreenState extends State<LevelSelectionScreen> {
               borderRadius: BorderRadius.circular(12),
             ),
             margin: const EdgeInsets.all(8),
-            child: Container(
+            child: SizedBox(
               width: 100,
               height: 100,
               child: Stack(
@@ -110,7 +110,7 @@ class _LevelSelectionScreenState extends State<LevelSelectionScreen> {
             );
           },
         ),
-        title: const Text("Level Seçimi"),
+        title: const Text("Wo"),
         centerTitle: true,
         backgroundColor: Colors.deepPurpleAccent,
       ),
@@ -124,8 +124,8 @@ class _LevelSelectionScreenState extends State<LevelSelectionScreen> {
         ),
         child: GridView.count(
           crossAxisCount: 2,
-          children: levelCards,
           padding: const EdgeInsets.all(16),
+          children: levelCards,
         ),
       ),
     );

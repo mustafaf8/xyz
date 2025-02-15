@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:xyz/games/G2048/G2048View.dart';
-import 'package:xyz/games/Gword/level_selection_screen.dart';
+import 'games/G2048/G2048View.dart';
+import 'games/Gword/level_selection_screen.dart';
+import 'games/GSudoku/sudoku_selection_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -82,7 +83,20 @@ class HomeScreen extends StatelessWidget {
                 );
               },
             ),
-            // İleride diğer uygulamaları ekleyebilirsiniz.
+            _buildAppCard(
+              context,
+              title: 'GSudoku',
+              icon: Icons.numbers,
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const SudokuSelectionScreen(),
+                  ),
+                );
+              },
+            ),
+            // Gelecekte diğer uygulamaları da ekleyebilirsiniz...
           ],
         ),
       ),

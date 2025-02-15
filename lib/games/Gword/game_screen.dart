@@ -6,7 +6,7 @@ import 'level_selection_screen.dart';
 
 class GameScreen extends StatefulWidget {
   final int level;
-  const GameScreen({Key? key, required this.level}) : super(key: key);
+  const GameScreen({super.key, required this.level});
 
   @override
   _GameScreenState createState() => _GameScreenState();
@@ -26,7 +26,7 @@ class _GameScreenState extends State<GameScreen> {
   Stopwatch stopwatch = Stopwatch();
   Timer? uiTimer;
 
-  int hintCount = 3;
+  int hintCount = 6;
 
   @override
   void initState() {
@@ -91,7 +91,7 @@ class _GameScreenState extends State<GameScreen> {
       return;
     }
     setState(() {
-      hintCount -= 1;
+      hintCount = 6;
     });
     List<String> unsolved =
         gameLogic.words
@@ -308,7 +308,7 @@ class _GameScreenState extends State<GameScreen> {
     double gridWidth = MediaQuery.of(context).size.width * 0.9;
     return Scaffold(
       appBar: AppBar(
-        title: Text("Level $level"),
+        title: Text("Word Level $level"),
         centerTitle: true,
         backgroundColor: Colors.deepPurpleAccent,
       ),

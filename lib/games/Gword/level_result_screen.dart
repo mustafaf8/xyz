@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'level_manager.dart';
 
 class LevelResultScreen extends StatelessWidget {
-  const LevelResultScreen({Key? key}) : super(key: key);
+  const LevelResultScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
