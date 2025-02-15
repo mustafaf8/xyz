@@ -26,7 +26,7 @@ class _GameScreenState extends State<GameScreen> {
   Stopwatch stopwatch = Stopwatch();
   Timer? uiTimer;
 
-  int hintCount = 3;
+  int hintCount = 6;
 
   @override
   void initState() {
@@ -91,7 +91,7 @@ class _GameScreenState extends State<GameScreen> {
       return;
     }
     setState(() {
-      hintCount = 0;
+      hintCount = 6;
     });
     List<String> unsolved =
         gameLogic.words
@@ -161,6 +161,7 @@ class _GameScreenState extends State<GameScreen> {
         selectionDirection = null;
       });
     }
+    // Level tamamlandığında
     if (gameLogic.foundWords.length == gameLogic.words.length) {
       stopwatch.stop();
       Duration elapsed = stopwatch.elapsed;
@@ -180,6 +181,10 @@ class _GameScreenState extends State<GameScreen> {
       );
       if (level < LevelManager.totalLevels && stars >= 2) {
         LevelManager.unlockedLevel = level + 1;
+
+        LevelManager.saveLastLevel(level + 1);
+      } else {
+        LevelManager.saveLastLevel(level);
       }
       showResultDialog(stars, elapsed);
     }

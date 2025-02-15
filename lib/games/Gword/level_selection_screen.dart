@@ -3,8 +3,24 @@ import 'package:xyz/main.dart';
 import 'level_manager.dart';
 import 'game_screen.dart';
 
-class LevelSelectionScreen extends StatelessWidget {
-  const LevelSelectionScreen({Key? key}) : super(key: key);
+class LevelSelectionScreen extends StatefulWidget {
+  const LevelSelectionScreen({super.key});
+
+  @override
+  State<LevelSelectionScreen> createState() => _LevelSelectionScreenState();
+}
+
+class _LevelSelectionScreenState extends State<LevelSelectionScreen> {
+  @override
+  void initState() {
+    super.initState();
+    // En son oynanan level bilgisini yükle ve unlockedLevel'ı güncelle
+    LevelManager.loadLastLevel().then((lastLevel) {
+      setState(() {
+        LevelManager.unlockedLevel = lastLevel;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -94,7 +110,6 @@ class LevelSelectionScreen extends StatelessWidget {
             );
           },
         ),
-
         title: const Text("Level Seçimi"),
         centerTitle: true,
         backgroundColor: Colors.deepPurpleAccent,

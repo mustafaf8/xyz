@@ -1,3 +1,5 @@
+import 'package:shared_preferences/shared_preferences.dart';
+
 class LevelResult {
   final int level;
   final int stars;
@@ -17,4 +19,14 @@ class LevelManager {
   static int unlockedLevel = 1;
   static const int totalLevels = 60;
   static Map<int, LevelResult> results = {};
+
+  static Future<int> loadLastLevel() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.getInt('gword_last_level') ?? 1;
+  }
+
+  static Future<void> saveLastLevel(int level) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setInt('gword_last_level', level);
+  }
 }

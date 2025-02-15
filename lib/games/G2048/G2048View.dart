@@ -25,6 +25,28 @@ class _G2048ViewState extends State<G2048View> {
     });
   }
 
+  /// Swipe hareketinin bitiminde yönü belirler.
+  void _handleSwipe(DragEndDetails details) {
+    final velocity = details.velocity.pixelsPerSecond;
+    final dx = velocity.dx;
+    final dy = velocity.dy;
+    if (dx.abs() > dy.abs()) {
+      // Yatay swipe
+      if (dx > 0) {
+        _handleMove(MoveDirection.right);
+      } else {
+        _handleMove(MoveDirection.left);
+      }
+    } else {
+      // Dikey swipe
+      if (dy > 0) {
+        _handleMove(MoveDirection.down);
+      } else {
+        _handleMove(MoveDirection.up);
+      }
+    }
+  }
+
   /// Belirtilen yönde hamle yapar ve high score'u günceller.
   void _handleMove(MoveDirection direction) {
     setState(() {
@@ -62,9 +84,30 @@ class _G2048ViewState extends State<G2048View> {
           const SizedBox(height: 10),
           _buildScoreBoard(),
           const SizedBox(height: 10),
-          _buildBoard(boardSize),
+          // Oyun tahtasını, swipe hareketlerini algılayacak GestureDetector ile sarmalıyoruz.
+          GestureDetector(
+            onPanEnd: _handleSwipe,
+            child: _buildBoard(boardSize),
+          ),
           const SizedBox(height: 10),
-          _buildControlButtons(),
+          // İsteğe bağlı olarak undo butonunu bırakabilirsiniz.
+          ElevatedButton(
+            onPressed: _undoMove,
+            style: ElevatedButton.styleFrom(
+              backgroundColor: const Color.fromARGB(
+                255,
+                58,
+                150,
+                255,
+              ), // Arka plan rengi
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              textStyle: const TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            child: const Text('Geri'),
+          ),
         ],
       ),
     );
@@ -146,59 +189,6 @@ class _G2048ViewState extends State<G2048View> {
           );
         },
       ),
-    );
-  }
-
-  /// Hareket butonlarını (yukarı, aşağı, sol, sağ) ve undo butonunu içeren widget.
-  Widget _buildControlButtons() {
-    return Column(
-      children: [
-        // Yukarı hareket butonu
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            IconButton(
-              iconSize: 48,
-              icon: const Icon(Icons.arrow_upward),
-              onPressed: () => _handleMove(MoveDirection.up),
-            ),
-          ],
-        ),
-        // Sol, geri alma ve sağ butonları
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            IconButton(
-              iconSize: 48,
-              icon: const Icon(Icons.arrow_back),
-              onPressed: () => _handleMove(MoveDirection.left),
-            ),
-            const SizedBox(width: 20),
-            IconButton(
-              iconSize: 48,
-              icon: const Icon(Icons.undo),
-              onPressed: _undoMove,
-            ),
-            const SizedBox(width: 20),
-            IconButton(
-              iconSize: 48,
-              icon: const Icon(Icons.arrow_forward),
-              onPressed: () => _handleMove(MoveDirection.right),
-            ),
-          ],
-        ),
-        // Aşağı hareket butonu
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            IconButton(
-              iconSize: 48,
-              icon: const Icon(Icons.arrow_downward),
-              onPressed: () => _handleMove(MoveDirection.down),
-            ),
-          ],
-        ),
-      ],
     );
   }
 
