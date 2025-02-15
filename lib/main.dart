@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'games/G2048/G2048View.dart'; // 2048 arayüz dosyamız
+import 'package:xyz/games/G2048/G2048View.dart';
+import 'package:xyz/games/Gword/level_selection_screen.dart'; // Gword level seçim ekranı
 
 void main() {
   runApp(const MyApp());
@@ -41,16 +42,18 @@ class MyHomePage extends StatelessWidget {
               child: const Text('G2048'),
             ),
             const SizedBox(height: 20),
-            // İleride diğer oyunlar (Gword vs.) için butonlar ekleyebilirsiniz.
-            // ElevatedButton(
-            //   onPressed: () {
-            //     Navigator.push(
-            //       context,
-            //       MaterialPageRoute(builder: (context) => const GwordView()),
-            //     );
-            //   },
-            //   child: const Text('Gword'),
-            // ),
+            // Gword butonu (seviye seçim ekranına yönlendirir)
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const LevelSelectionScreen(),
+                  ),
+                );
+              },
+              child: const Text('Gword'),
+            ),
           ],
         ),
       ),
