@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'games/G2048/G2048View.dart';
 import 'games/Gword/level_selection_screen.dart';
 import 'games/GSudoku/sudoku_selection_screen.dart';
+// GXoxView import
+import 'games/GXox/gxox_view.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -96,7 +98,20 @@ class HomeScreen extends StatelessWidget {
                 );
               },
             ),
-            // Gelecekte diğer uygulamaları da ekleyebilirsiniz...
+            // GXox
+            _buildAppCard(
+              context,
+              title: 'GXox',
+              icon: Icons.cancel,
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const GXoxView(),
+                  ),
+                );
+              },
+            ),
           ],
         ),
       ),

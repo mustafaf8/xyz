@@ -73,6 +73,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "7.0.1"
+  flame:
+    dependency: "direct main"
+    description:
+      name: flame
+      sha256: "8b5abd3fe76b8b3357ba777513900fa4f1c0dc5b46ab07ad7c38e8b290773bb9"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.25.0"
+  flame_forge2d:
+    dependency: "direct main"
+    description:
+      name: flame_forge2d
+      sha256: "7bab88139743eb1558b02fb5baade8ae6b80a1b2fa672c4567636b6f7a175a0a"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.18.2+6"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -96,6 +112,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  forge2d:
+    dependency: transitive
+    description:
+      name: forge2d
+      sha256: "6aac85f1cb9f7e3720bff5d6884ff2e1bcb74402e6fe271599b7b1f65574f5e2"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.13.1"
   leak_tracker:
     dependency: transitive
     description:
@@ -152,6 +176,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.16.0"
+  ordered_set:
+    dependency: transitive
+    description:
+      name: ordered_set
+      sha256: fc861bb51fc863cd3e0718e21768af9586e0d5022b91a0fd4437636456cdb7d0
+      url: "https://pub.dev"
+    source: hosted
+    version: "6.1.1"
   path:
     dependency: transitive
     description:
@@ -343,4 +375,4 @@ packages:
     version: "1.1.0"
 sdks:
   dart: ">=3.7.0 <4.0.0"
-  flutter: ">=3.24.0"
+  flutter: ">=3.27.1"
