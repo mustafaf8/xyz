@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:xyz/games/GPuzzle/ImagePuzzleGameScreen.dart';
 import 'games/G2048/G2048View.dart';
 import 'games/Gword/level_selection_screen.dart';
 import 'games/GSudoku/sudoku_selection_screen.dart';
 // GXoxView import
 import 'games/GXox/gxox_view.dart';
+// GFlow import
+import 'games/GFlow/gflow_selection_screen.dart'; // Örnek: Seviye seçimi ekranı
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -98,7 +101,6 @@ class HomeScreen extends StatelessWidget {
                 );
               },
             ),
-            // GXox
             _buildAppCard(
               context,
               title: 'GXox',
@@ -106,8 +108,33 @@ class HomeScreen extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
+                  MaterialPageRoute(builder: (context) => const GXoxView()),
+                );
+              },
+            ),
+            _buildAppCard(
+              context,
+              title: 'puzzle',
+              icon: Icons.image,
+              onTap: () {
+                Navigator.push(
+                  context,
                   MaterialPageRoute(
-                    builder: (context) => const GXoxView(),
+                    builder: (context) => const ImagePuzzleGameScreen(),
+                  ),
+                );
+              },
+            ),
+            // GFlow
+            _buildAppCard(
+              context,
+              title: 'GFlow',
+              icon: Icons.alt_route,
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const GFlowLevelSelectionScreen(),
                   ),
                 );
               },
